@@ -1,0 +1,20 @@
+遠端控制虛擬主機有兩個，一個是Putty，一個是Xshell，而我自己是用Putty，所以就用這個
+來教學，首先可以到
+https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+去做下載，Package files裡面是一整套的，個人覺得下載這個即可，如果你不要也可以選擇下
+面有做個別下載的使用，接著把之前教的鑰匙傳到本來的作業系統上，個人是用filezilla這個
+傳輸軟體，傳過來的鑰匙並不能直接在putty上使用，要經過轉換格式，這時候剛剛下載的包就
+有用了，裡面有一個叫 PuTTYgen.exe 的他可以將轉換鑰匙格式，請選擇 SSH-1(RSA)型態，
+然後按下 "Load" 載入你剛剛上傳到電腦的私鑰，轉換完後Load下面會有Save private key
+，儲存私鑰，存下來的格式應該為id_rsa.ppk，到這裡 PuTTYgen.exe 就已經功成身退了。
+改設定 Putty 的設定檔。先執行 Putty.exe吧，請直接到Terminal->Feature，勾選
+disable appliction keypad mode，意思是使用右邊的數字盤，再來到Connection->data
+Auto login username打入使用者名稱，這樣每次使用putty就不用打username了，然後是
+Connection->SSH->Auth，勾選 
+Attempt authentication using Pageant 和 
+Attempt TIS or CryptoCard auth (SSH-1)，
+其他的不要勾選。之後按下 "Browse" 按鍵，
+選取你剛剛儲存的私鑰，接著回到Session，在Host name打上你的IP位址下方的connection type
+記得選取SSH，然後再到下方的save session打你自己想要的存取名稱，然後按下旁邊的save，這樣
+就可以不用每次使用Putty時都還要重新設定一次，基本上能成功進入，Putty的複製貼上就是滑鼠右鍵
+結束~~
