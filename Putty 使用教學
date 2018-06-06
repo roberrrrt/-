@@ -1,4 +1,4 @@
-遠端控制虛擬主機的軟體有兩個，一個是Putty，一個是Xshell，而我自己是用Putty，所以就用這個
+    遠端控制虛擬主機的軟體有兩個，一個是Putty，一個是Xshell，而我自己是用Putty，所以就用這個
 來教學，首先可以到
 https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 去做下載，Package files裡面是一整套的，個人覺得下載這個即可，如果你不要也可以選擇下
@@ -22,7 +22,9 @@ Attempt TIS or CryptoCard auth (SSH-1)，
 
 異常排除 :
     1.SSH Server 很不幸的回覆我們「Server refused our key」,
-    修改 SSH Server 的設定值 (sudo vi /etc/ssh/sshd_config)
+    修改 SSH Server 的設定值
+    $ sudo vi /etc/ssh/sshd_config
     找到 #PubkeyAuthentication yes 改成 PubkeyAuthentication yes(註解拿掉)。
     找到 #AuthorizedKeysFile .ssh/authorized_keys 改成 AuthorizedKeysFile .ssh/authorized_keys(註解拿掉)。
-    接著重啟SSH (systemctl restart sshd)
+    接著重啟SSH
+    $ systemctl restart sshd
