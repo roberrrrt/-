@@ -1,0 +1,25 @@
+CentOS 7 的 SELinux 及 Firewalld 防火牆都是安全相關的套件, 
+RHEL 及 CentOS 均預設開啟, 但如果在開發或測試的機器上, 將它們關閉對除錯方便不少。
+
+檢查SELINUX是否開啟 
+$ sestatus
+有的話就關閉他 vi /etc/selinux/config
+找到其中一行
+找到以下一行:
+SELINUX=enforce
+改成:
+SELINUX=disabled
+另外將 “SELINUXTYPE=targeted” 加上註釋，保存離開
+
+在來是關閉防火牆
+$ systemctl stop firewalld.service
+$ systemctl disable firewalld.service
+可下指令查看運行狀態
+$ firewall-cmd --state
+
+因為剛剛有手動更改SELINUX的檔案
+需要重開機才能生效
+
+重開機之後再下
+$ sestatus
+看是否為顯示disabled
