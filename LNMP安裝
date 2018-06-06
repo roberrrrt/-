@@ -1,1 +1,42 @@
 LNMP安裝教學
+安裝參考 : https://www.hostinger.com/tutorials/how-to-install-lemp-centos7
+
+第一步 : 安裝NGINX
+    加入 EPEL 套件庫
+    $ sudo yum install epel-release -y
+    接著安裝NGINX本身
+    $ sudo yum install nginx -y
+    運行他
+    $ systemctl start nginx
+    $ systemctl enable nginx
+    接著可以試著連接看看，有沒有出現WELCOME的頁面
+    
+第二步 : 安裝MYSQL
+    MariaDB裝起來簡單，而MYSQL安裝比較特殊一點，
+    這裡就先介紹如何安裝MYSQL
+    首先到網站訪問看要哪一個版本的
+    https://dev.mysql.com/downloads/repo/yum/
+    拉到最下面的安裝檔，妹個安裝檔下面都有一排小字，那個就是要安裝的名稱
+    $ wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm
+    一旦保存了rpm文件，我們將通過運行md5sum並與網站上列出的相應MD5值進行比較來驗證下載的完整性：
+    $ md5sum mysql57-community-release-el7-9.noarch.rpm
+    驗證內容都一樣，就安裝她吧
+    $ sudo rpm -ivh mysql57-community-release-el7-9.noarch.rpm
+    $ sudo yum install mysql-server
+    啟動MYSQL
+    $ sudo systemctl start mysqld
+    $ sudo systemctl status mysqld
+    在安裝過程中，MySQL會為用戶生成一個臨時密碼。使用mysqld.log此命令找到它
+    $ sudo grep 'temporary password' /var/log/mysqld.log
+    使用此命令運行安全腳本
+    $ sudo mysql_secure_installation
+    這會提示你輸入剛才MYSQL幫你生成的臨時密碼，輸入正確才可以做更改密碼，
+    且要求輸入一個新的12個字符的密碼，其中至少包含一個大寫字母，一個小寫字母，一個數字和一個特殊字符
+    輸入完成後您將收到關於新密碼強度的反饋，然後系統會立即提示您再次更改，既然你剛才做了，可以直接打No
+    再來接下來的連續問題就一直按Y跟ENTER就好
+    接下來是可不可以進入
+    $ mysql -u root -p 
+    有成功進入即可
+    
+第三步 : 安裝PHP
+    
