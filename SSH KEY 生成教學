@@ -5,11 +5,11 @@ SSH連線很方便且安全機制也較完善
 第一步 :
 創造SSH KEY
 先進入使用者目錄(注意不是root底下的喔)，指令ls看看有沒有/.ssh這個資料夾，有就進入，沒有就自己創一個，
-創建之後權限調整為700(chmod 700 /.ssh)，在ls看有沒有正確調整，然後接著打製造KEY的指令，一
+創建之後權限調整為700($ chmod 700 /.ssh)，在ls看有沒有正確調整，然後接著打製造KEY的指令，一
 般使用者可以直接打
-ssh-keygen -t rsa
+$ ssh-keygen -t rsa
 但如果要求比較嚴謹的朋友可以打
-ssh-keygen -t rsa -b 4096
+$ ssh-keygen -t rsa -b 4096
 已用來增加鑰匙長度，接著會有一串問題
 第一個是存放鑰匙的資料夾，用預設的即可，也就你在你的.ssh資料夾裡面，所以直接按Enter，再來第2個問題是問
 說，要不要設定鑰匙的密碼，一般的使用者可以直接按Enter跳過，我自己是有設定密碼啦，再來第3個問題就是重複
@@ -36,7 +36,7 @@ drwx------ 2 yourname yourname 4096 Mar 12 14:48 .ssh
 -rw-r--r-- 1 yourname yourname 400 Mar 12 14:38 id_rsa.pub
 注意權限如果跟上面的的不一樣記得更改，之後在你的帳號  ~/etc/.ssh 目錄底下，把 id_rsa.pub 檔案複製另
 外一個檔案，檔名是 authorized_keys，注意，權限也要對
-cp -a ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
+$ cp -a ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 -rw-r--r-- 1 yourname yourname 400 Mar 12 14:48 authorized_keys
 切記 : 
 id_rsa.pub：公開金鑰（public key），這是可以對外公開的金鑰，之後要將它放在遠端的 Linux 伺服器上作認證使用。
