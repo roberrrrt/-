@@ -1,0 +1,12 @@
+如果要刪root密碼 和 把user加到sudo
+
+登root下 visudo
+將您的group 名稱加到 ## Allows people in group wheel to run all commands 下
+
+ex. %michael79824  ALL=(ALL)       ALL  (前面的% 一定要加 )
+
+測試sudo可用後，刪除root密碼
+$ passwd -d root
+
+/etc/pam.d/su 中將此行註解移除
+#auth           required        pam_wheel.so use_uid
